@@ -25,9 +25,7 @@ class FactsListViewController: UIViewController, UITableViewDataSource {
     var dataController:DataController!
     
     var fetchedResultsController:NSFetchedResultsController<Fact>!
-    //    var fact: Fact!
-    //    var factToSave: String?
-    
+   
     /// A date formatter for date text in note cells
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
