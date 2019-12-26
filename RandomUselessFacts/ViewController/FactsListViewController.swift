@@ -145,12 +145,12 @@ class FactsListViewController: UIViewController, UITableViewDataSource {
        // MARK: - Segue
 
        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-           if let vc = segue.destination as? FactDetailsViewController {
+           if let viewController = segue.destination as? FactDetailsViewController {
                if let indexPath = tableView.indexPathForSelectedRow {
-                   vc.fact = fetchedResultsController.object(at: indexPath)
-                   vc.dataController = dataController
+                   viewController.fact = fetchedResultsController.object(at: indexPath)
+                   viewController.dataController = dataController
 
-                   vc.onDelete = { [weak self] in
+                   viewController.onDelete = { [weak self] in
                        if let indexPath = self?.tableView.indexPathForSelectedRow {
                            self?.deleteFact(at: indexPath)
                            self?.navigationController?.popViewController(animated: true)
