@@ -16,24 +16,24 @@ class FactDetailsViewController: UIViewController {
     
     
     // MARK: - PROPERTIES
-
-     var fact: Fact!
-     
-     var dataController:DataController!
     
-//     var factPersistence: FactPersistence!
-     
-     /// A closure that is run when the user asks to delete the current note
-     var onDelete: (() -> Void)?
-
-     /// A date formatter for the view controller's title text
-     let dateFormatter: DateFormatter = {
-         let df = DateFormatter()
-         df.dateStyle = .medium
-         return df
-     }()
-
-//    MARK: - SET UP VIEW
+    var fact: Fact!
+    
+    var dataController:DataController!
+    
+    //     var factPersistence: FactPersistence!
+    
+    /// A closure that is run when the user asks to delete the current fact
+    var onDelete: (() -> Void)?
+    
+    /// A date formatter for the view controller's title text
+    let dateFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.dateStyle = .medium
+        return df
+    }()
+    
+    //    MARK: - SET UP VIEW
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,13 +42,13 @@ class FactDetailsViewController: UIViewController {
             navigationItem.title = dateFormatter.string(from: creationDate)
         }
         savedFactLabel.text = fact.data
-        }
-        
-      // MARK: - Actions
-
-        @IBAction func deleteFact(sender: Any) {
-            presentDeleteFactAlert()
-        }
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func deleteFact(sender: Any) {
+        presentDeleteFactAlert()
+    }
     
 }
 
@@ -61,10 +61,10 @@ extension FactDetailsViewController {
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: deleteHandler))
         present(alert, animated: true, completion: nil)
     }
-
+    
     func deleteHandler(alertAction: UIAlertAction) {
         onDelete?()
     }
 }
-        
+
 
