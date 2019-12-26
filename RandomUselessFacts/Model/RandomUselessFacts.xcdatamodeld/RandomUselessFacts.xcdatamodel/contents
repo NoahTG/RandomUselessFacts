@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Fact" representedClassName="Fact" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="data" optional="YES" attributeType="String"/>
+        <relationship name="toNotebook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Notebook" inverseName="toFacts" inverseEntity="Notebook"/>
+    </entity>
+    <entity name="Notebook" representedClassName="Notebook" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="toFacts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Fact" inverseName="toNotebook" inverseEntity="Fact"/>
+    </entity>
+    <elements>
+        <element name="Fact" positionX="1556.57421875" positionY="1370.2265625" width="128" height="88"/>
+        <element name="Notebook" positionX="1766.98828125" positionY="1371.26171875" width="128" height="88"/>
+    </elements>
+</model>
