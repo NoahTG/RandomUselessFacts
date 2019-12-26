@@ -18,13 +18,9 @@ class FactDetailsViewController: UIViewController {
     // MARK: - PROPERTIES
     
     var fact: Fact!
-    
-    var dataController:DataController!
-    
     //     var factPersistence: FactPersistence!
     
-    /// A closure that is run when the user asks to delete the current fact
-    var onDelete: (() -> Void)?
+    var dataController:DataController!
     
     /// A date formatter for the view controller's title text
     let dateFormatter: DateFormatter = {
@@ -47,24 +43,8 @@ class FactDetailsViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func deleteFact(sender: Any) {
-        presentDeleteFactAlert()
+        showDeleteFactAlert()
     }
     
 }
-
-// MARK: - HELPER FUNCTIONS
-
-extension FactDetailsViewController {
-    func presentDeleteFactAlert() {
-        let alert = UIAlertController(title: "Delete Fact", message: "Do you want to delete this fact?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: deleteHandler))
-        present(alert, animated: true, completion: nil)
-    }
-    
-    func deleteHandler(alertAction: UIAlertAction) {
-        onDelete?()
-    }
-}
-
 
