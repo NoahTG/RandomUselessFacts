@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-//
+
 //        let navigationController = window?.rootViewController as! UINavigationController
 //
 //        let dailyFactViewController = navigationController.topViewController as! DailyFactViewController

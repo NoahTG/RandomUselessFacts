@@ -9,13 +9,6 @@
 import Foundation
 
 //// Response from Useless Facts API
-//struct RandomFactResponse: Codable {
-//    let fact: String
-//}
-//
-//struct FactOfTheDayResponse: Codable {
-//    let fact: String
-//}
 
 //  Data from UselessFacts API
    struct UselessFactResponse: Codable {

@@ -41,7 +41,7 @@ class DailyFactViewController: UIViewController {
     
     @IBAction func newRandomFactTapped(_ sender: Any) {
         loadingIndicator.isHidden = false
-        UselessFactsClient.getRandomWord(completion: handleRandomFactResponse(success:error:))
+        UselessFactsClient.getRandomFact(completion: handleRandomFactResponse(success:error:))
     }
     
     // MARK: - Response Handlers

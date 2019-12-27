@@ -11,9 +11,7 @@
 		7764932023AEF14B00F7932A /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7764931F23AEF14B00F7932A /* AlertExtension.swift */; };
 		7764932323AEF1C300F7932A /* UselessFact+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7764932223AEF1C300F7932A /* UselessFact+Extension.swift */; };
 		7764932523AEF1E600F7932A /* Notebook+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7764932423AEF1E600F7932A /* Notebook+Extension.swift */; };
-		7764932C23AEF52600F7932A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7764932B23AEF52500F7932A /* APIClient.swift */; };
 		7764932F23AEF62000F7932A /* UselessFactsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7764932E23AEF62000F7932A /* UselessFactsClient.swift */; };
-		7764933123AEF63500F7932A /* UselessFactsClient+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7764933023AEF63500F7932A /* UselessFactsClient+Constants.swift */; };
 		7764933323AEF64800F7932A /* UselessFactsDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7764933223AEF64800F7932A /* UselessFactsDataResponse.swift */; };
 		7764933623B009FB00F7932A /* FactsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7764933523B009FB00F7932A /* FactsListViewController.swift */; };
 		7764933823B00A1600F7932A /* FactsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7764933723B00A1600F7932A /* FactsDetailsViewController.swift */; };
@@ -35,9 +33,7 @@
 		7764931F23AEF14B00F7932A /* AlertExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
 		7764932223AEF1C300F7932A /* UselessFact+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UselessFact+Extension.swift"; sourceTree = "<group>"; };
 		7764932423AEF1E600F7932A /* Notebook+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notebook+Extension.swift"; sourceTree = "<group>"; };
-		7764932B23AEF52500F7932A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		7764932E23AEF62000F7932A /* UselessFactsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UselessFactsClient.swift; sourceTree = "<group>"; };
-		7764933023AEF63500F7932A /* UselessFactsClient+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UselessFactsClient+Constants.swift"; sourceTree = "<group>"; };
 		7764933223AEF64800F7932A /* UselessFactsDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UselessFactsDataResponse.swift; sourceTree = "<group>"; };
 		7764933523B009FB00F7932A /* FactsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsListViewController.swift; sourceTree = "<group>"; };
 		7764933723B00A1600F7932A /* FactsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsDetailsViewController.swift; sourceTree = "<group>"; };
@@ -109,20 +105,10 @@
 		7764932D23AEF58600F7932A /* NetworkServices */ = {
 			isa = PBXGroup;
 			children = (
-				7764932B23AEF52500F7932A /* APIClient.swift */,
-				7764933423AEF64F00F7932A /* UselessFacts */,
-			);
-			path = NetworkServices;
-			sourceTree = "<group>";
-		};
-		7764933423AEF64F00F7932A /* UselessFacts */ = {
-			isa = PBXGroup;
-			children = (
 				7764932E23AEF62000F7932A /* UselessFactsClient.swift */,
-				7764933023AEF63500F7932A /* UselessFactsClient+Constants.swift */,
 				7764933223AEF64800F7932A /* UselessFactsDataResponse.swift */,
 			);
-			path = UselessFacts;
+			path = NetworkServices;
 			sourceTree = "<group>";
 		};
 		7764933D23B0122E00F7932A /* View */ = {
@@ -258,7 +244,6 @@
 				7764934523B2CA8A00F7932A /* NotebookCell.swift in Sources */,
 				7764931E23AEEFC800F7932A /* DataController.swift in Sources */,
 				776E67B223AEE7810016636E /* DailyFactViewController.swift in Sources */,
-				7764933123AEF63500F7932A /* UselessFactsClient+Constants.swift in Sources */,
 				7764933323AEF64800F7932A /* UselessFactsDataResponse.swift in Sources */,
 				776E67B823AEE7810016636E /* RandomUselessFacts.xcdatamodeld in Sources */,
 				776E67AE23AEE7810016636E /* AppDelegate.swift in Sources */,
@@ -271,7 +256,6 @@
 				7764932023AEF14B00F7932A /* AlertExtension.swift in Sources */,
 				7764932323AEF1C300F7932A /* UselessFact+Extension.swift in Sources */,
 				776E67B023AEE7810016636E /* SceneDelegate.swift in Sources */,
-				7764932C23AEF52600F7932A /* APIClient.swift in Sources */,
 				7764933623B009FB00F7932A /* FactsListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
