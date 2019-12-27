@@ -31,7 +31,7 @@ class DailyFactViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        if let uselessFact = UserDefaults.standard.value(forKey: "HasStoredFact") { // need to update current word and def because of search response
+        if let uselessFact = UserDefaults.standard.value(forKey: "HasStoredFact") {
             if uselessFact as! Bool {
                 self.factLabel.text = UserDefaults.standard.value(forKey: "StoredFact") as? String
                 self.currentFact = UserDefaults.standard.value(forKey: "StoredFact") as? String
@@ -50,10 +50,10 @@ class DailyFactViewController: UIViewController {
             self.loadingIndicator.isHidden = true
             
             if success != nil {
-                self.currentFact = success!.fact + ":"
+                self.currentFact = success!.fact
                 self.refresh()
             } else {
-                self.showAlert(title: "Failed to get useless fact of the Day", message: error?.localizedDescription ?? "")
+                self.showAlert(title: "Failed to get useless fact of the day", message: error?.localizedDescription ?? "")
             }
         }
     }

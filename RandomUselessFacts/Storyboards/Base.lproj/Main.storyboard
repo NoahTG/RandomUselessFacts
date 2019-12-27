@@ -32,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Useless Fact of the Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEZ-EK-mV7">
-                                <rect key="frame" x="21" y="119" width="372" height="125"/>
+                                <rect key="frame" x="21.5" y="119" width="371.5" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="tV6-PL-Uh8"/>
                                 </constraints>
