@@ -26,7 +26,7 @@ class DailyFactViewController: UIViewController {
         super.viewDidLoad()
         
         loadingIndicator.isHidden = false
-        uselessFactsClient.getFactOfTheDay(completionHandler: handleFactOfTheDayResponse(success:error:))
+        UselessFactsClient.getFactOfTheDay(completion: handleFactOfTheDayResponse(success:error:))
     }
     
     
@@ -41,7 +41,7 @@ class DailyFactViewController: UIViewController {
     
     @IBAction func newRandomFactTapped(_ sender: Any) {
         loadingIndicator.isHidden = false
-        uselessFactsClient.getRandomFact(completionHandler: handleRandomFactResponse(success:error:))
+        UselessFactsClient.getRandomWord(completion: handleRandomFactResponse(success:error:))
     }
     
     // MARK: - Response Handlers

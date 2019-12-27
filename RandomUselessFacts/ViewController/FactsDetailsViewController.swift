@@ -19,6 +19,10 @@ class FactDetailsViewController: UIViewController {
     
     var fact: Fact!
     //     var factPersistence: FactPersistence!
+
+    
+    /// A closure that is run when the user asks to delete the current fact
+    var onDelete: (() -> Void)?
     
     var dataController:DataController!
     
@@ -43,8 +47,33 @@ class FactDetailsViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func deleteFact(sender: Any) {
-        showDeleteFactAlert()
+        presentDeleteFactAlert()
     }
+    
+    // MARK: - Helper Functions
+
+    func deleteHandler(alertAction: UIAlertAction) {
+            onDelete?()
+        }
+    
+    func presentDeleteFactAlert() {
+           
+           let alertVC = UIAlertController(title: "Delete Fact",
+                                           message: "Do you want to delete this fact?",
+                                           preferredStyle: .alert)
+           
+           alertVC.addAction(UIAlertAction(title: "Cancel",
+                                           style: .cancel,
+                                           handler: nil))
+           
+           alertVC.addAction(UIAlertAction(title: "Delete",
+                                           style: .destructive,
+                                           handler: deleteHandler))
+           DispatchQueue.main.async {
+               self.present(alertVC, animated: true, completion: nil)
+           }
+       }
+       
     
 }
 

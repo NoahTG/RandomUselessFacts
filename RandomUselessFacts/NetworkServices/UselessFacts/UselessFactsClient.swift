@@ -10,165 +10,76 @@ import Foundation
 import UIKit
 import CoreData
 
-class UselessFactsClient: UselessFactsClientProtocol {
+class UselessFactsClient {
  
-    
-    // MARK: Properties
-    let apiClient: APIClientProtocol
-            
-    var dataController: DataController
-    
-    var notebookPersist: NotebookPersistence
-        
-    // Create baseURL for Flickr requests & lazy means code only runs when called
-       private lazy var baseURL: URL = {
-           var components = URLComponents()
-           components.scheme = UselessFactsAPI.APIScheme
-           components.host = UselessFactsAPI.APIHost
-           components.path = UselessFactsAPI.APIPath
-           return components.url!
-       }()
-    
-    
-    // MARK: Initializers
 
-    required init(apiClient: APIClientProtocol, notebookPersist: NotebookPersistence, dataController: DataController) {
-         self.apiClient = apiClient
-         self.notebookPersist = notebookPersist
-         self.dataController = dataController
-     }
-    
     // MARK: Imperatives
     
-    
-    func getFactOfTheDay(completionHandler: @escaping (UselessFactResponse?, Error?) -> Void) {
-        let queryParameters = [
-                   UselessFactsKeys.Format: UselessFactsDefaultValues.ResponseFormat,
-                   UselessFactsKeys.NoJsonCallback: UselessFactsDefaultValues.NoJsonCallback,
-                   
-                   UselessFactsKeys.Method: UselessFactsMethods.FactOfTheDay
-               ]
-
-               let dataTask = apiClient.createGETDataTask(
-                    withURL: baseURL,
-                    parameters: queryParameters,
-                    headers: nil) { (data, error) in
-                        
-                   guard let data = data, error == nil else {
-                       completionHandler (nil, error!)
-                       return
-                   }
-                   
-                   let decoder = JSONDecoder()
-                  
-                   do {
-                       let uselessGETResponse = try decoder.decode(UselessFactResponse.self, from: data)
-                       completionHandler(uselessGETResponse, nil)
-                   } catch {
-                       completionHandler(nil, URLSessionTask.TaskHasError.malformedJsonResponse)
-                       }
-                   }
-                   dataTask.resume()
+     enum Endpoints {
+         static let base = "https://uselessfacts.jsph.pl"
+         
+         case factOfTheDay
+         case randomFact
+        
+         var stringValue: String {
+             switch self {
+             case .factOfTheDay: return Endpoints.base + "/today.json?language=en"
+             case .randomFact: return Endpoints.base + "/random.json?language=en"
+            }
+         }
+         
+         var url: URL {
+             return URL(string: stringValue)!
+            }
         }
     
-           
+        static func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
+         let task = URLSession.shared.dataTask(with: url) { data, response, error in
+             guard let data = data else {
+                 DispatchQueue.main.async {
+                     completion(nil, error)
+                 }
+                 return
+             }
+             
+             let decoder = JSONDecoder()
+             
+             do {
+                 let responseObject = try decoder.decode(ResponseType.self, from: data)
+                 DispatchQueue.main.async {
+                     completion(responseObject, nil)
+                 }
+             } catch {
+                 completion(nil, error)
+             }
+         }
+         task.resume()
+         
+         return task
+     }
     
-
-
-    func getRandomFact(completionHandler: @escaping (UselessFactResponse?, Error?) -> Void) {
-        let queryParameters = [
-                       UselessFactsKeys.Format: UselessFactsDefaultValues.ResponseFormat,
-                       UselessFactsKeys.NoJsonCallback: UselessFactsDefaultValues.NoJsonCallback,
-                       
-                       UselessFactsKeys.Method: UselessFactsMethods.RandomUselessFact
-                   ]
-
-                   let dataTask = apiClient.createGETDataTask(
-                        withURL: baseURL,
-                        parameters: queryParameters,
-                        headers: nil) { (data, error) in
-                            
-                       guard let data = data, error == nil else {
-                           completionHandler (nil, error!)
-                           return
-                       }
-                       
-                       let decoder = JSONDecoder()
-                      
-                       do {
-                           let uselessGETResponse = try decoder.decode(UselessFactResponse.self, from: data)
-                           completionHandler(uselessGETResponse, nil)
-                       } catch {
-                           completionHandler(nil, URLSessionTask.TaskHasError.malformedJsonResponse)
-                           }
-                       }
-                       dataTask.resume()
-        }
+     
+        class func getFactOfTheDay(completion: @escaping (UselessFactResponse?, Error?) -> Void) {
+            taskForGETRequest(url: Endpoints.factOfTheDay.url, responseType: UselessFactResponse.self){ response, error in
+             if let response = response {
+                 completion(response, nil)
+             } else {
+                 completion(nil, error)
+             }
+         }
+     }
+     
+        class func getRandomFact(completion: @escaping (UselessFactResponse?, Error?) -> Void) {
+            taskForGETRequest(url: Endpoints.randomFact.url, responseType: UselessFactResponse.self){ response, error in
+             if let response = response {
+                 completion(response, nil)
+             } else {
+                 completion(nil, error)
+             }
+         }
+     }
     
     
 }
-    
-            
-//     func saveFact(fromUrl url: URL, completionHandler: @escaping (String?, URLSessionTask.TaskHasError?) -> Void ) {
-//
-//
-//        let dataTask = self.apiClient.createGETDataTask(
-//            withURL: url,
-//            parameters: [:],
-//            headers: [:]) { (data, error) in
-//
-//                guard let data = data, error == nil else {
-//                    completionHandler(nil, error)
-//                    return
-//
-//                }
-//
-//                guard let image = UIImage(data: data) else {
-//                    completionHandler(nil, .unexpectedResource)
-//                    return
-//                }
-//                completionHandler(image, nil)
-//            }
-//        dataTask.resume()
-//
-//        let factObjectId = fact.objectID
-//
-//
-//       let factContext = self.dataController.viewContext.object(with: factObjectId) as! Fact
-//
-//       DispatchQueue.main.async {
-//           do {
-//               try self.notebookPersist.saveFact(
-//                   fact:  ,
-//                   fact: UselessFactResponse, toNotebook: factContext.toNotebook!)
-//               completionHandler(fact, data.searchResults.pages, nil)
-//           } catch {
-//               completionHandler(nil, error)
-//           }
-//       }
-//   }
-//
-//
-//}
 
 
-// Protocol for retrieving and persisting data from Useless Facts API
-protocol UselessFactsClientProtocol {
-    
-    /// Retrieves Useless Fact of the Day
-    /// - Parameters:
-    ///     - completionHandler: function that will be called following the compeltion of this method.
-    func getFactOfTheDay(completionHandler: @escaping (UselessFactResponse?, Error?) -> Void)
-    
-    /// Retrieves random fact
-      /// - Parameters
-      ///     - completionHandler: function that will be called following the compeltion of this method.
-    func getRandomFact(completionHandler: @escaping (UselessFactResponse?, Error?) -> Void)
-//
-//    /// Download the fact from URL
-//    /// - Parameters:
-//    ///        - url: Fact Url.
-//    ///        - completionHandler: function that will be called following the completion of this method.
-//    func saveFact(fromUrl url: URL, completionHandler: @escaping (String?, URLSessionTask.TaskHasError?) -> Void )
-    
-}
