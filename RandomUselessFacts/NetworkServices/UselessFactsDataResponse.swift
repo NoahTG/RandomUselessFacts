@@ -12,9 +12,9 @@ import Foundation
 
 //  Data from UselessFacts API
    struct UselessFactResponse: Codable {
-       let fact: String
+       let text: String
 
        enum CodingKeys: String, CodingKey {
-           case fact
+           case text
        }
 }

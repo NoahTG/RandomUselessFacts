@@ -50,7 +50,7 @@ class DailyFactViewController: UIViewController {
             self.loadingIndicator.isHidden = true
             
             if success != nil {
-                self.currentFact = success!.fact
+                self.currentFact = success!.text
                 self.refresh()
             } else {
                 self.showAlert(title: "Failed to get useless fact of the day", message: error?.localizedDescription ?? "")
@@ -61,7 +61,7 @@ class DailyFactViewController: UIViewController {
     func handleRandomFactResponse(success: UselessFactResponse?, error: Error?) {
         DispatchQueue.main.async {
             if success != nil {
-                self.newFact = success!.fact
+                self.newFact = success!.text
             } else {
                 self.loadingIndicator.isHidden = true
                 self.showAlert(title: "Failed to get new random useless fact", message: error?.localizedDescription ?? "")
