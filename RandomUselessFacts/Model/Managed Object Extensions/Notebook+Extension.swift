@@ -31,7 +31,6 @@ struct NotebookPersistence: NotebookPersistenceProtocol {
         fact.forEach { (uselessFact) in
             _ = factPersist.createUselessFact(uselessFact: uselessFact, inNotebook: notebook)
         }
-        
         try context.save()
     }
    

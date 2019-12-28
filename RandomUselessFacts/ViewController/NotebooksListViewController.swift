@@ -171,7 +171,7 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
 
                 if (factToSave != nil) {
                     let factToAdd = Fact(context: dataController.viewContext)
-                    factToAdd.data = factToSave!
+                    factToAdd.text = factToSave!
                     factToAdd.toNotebook = destinationList
                     try? dataController.viewContext.save()
                 }

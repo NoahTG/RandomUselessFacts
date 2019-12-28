@@ -124,7 +124,7 @@ class FactsListViewController: UIViewController, UITableViewDataSource {
         let aFact = fetchedResultsController.object(at: indexPath)
 
         // Configure cell
-        cell.factLabel.text = aFact.data
+        cell.factLabel.text = aFact.text
         
         if let creationDate = aFact.creationDate {
             cell.dateLabel.text = dateFormatter.string(from: creationDate)

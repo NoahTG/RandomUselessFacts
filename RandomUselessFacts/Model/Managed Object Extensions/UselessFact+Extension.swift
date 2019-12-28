@@ -30,7 +30,7 @@ struct FactPersistence: FactPersistenceProtocol {
     }
 
     let fact = Fact(context: context)
-    fact.data = uselessFact.text
+    fact.text = uselessFact.text
     return fact
 }
     

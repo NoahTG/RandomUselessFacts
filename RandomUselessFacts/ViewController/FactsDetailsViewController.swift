@@ -41,7 +41,7 @@ class FactDetailsViewController: UIViewController {
         if let creationDate = fact.creationDate {
             navigationItem.title = dateFormatter.string(from: creationDate)
         }
-        savedFactLabel.text = fact.data
+        savedFactLabel.text = fact.text
     }
     
     // MARK: - Actions
