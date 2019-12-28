@@ -11,6 +11,9 @@ import CoreData
 
 extension Fact {
         
+    // MARK: - Life cycle
+
+    
     public override func awakeFromInsert() {
         super.awakeFromInsert()
         self.creationDate = Date()
@@ -35,7 +38,7 @@ struct FactPersistence: FactPersistenceProtocol {
            
         let fetchRequest: NSFetchRequest<Fact> = Fact.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
-        let predicate = NSPredicate(format: "list == %@", notebook)
+        let predicate = NSPredicate(format: "toNotebook == %@", notebook)
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [sortDescriptor]
 
