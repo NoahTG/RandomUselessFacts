@@ -21,23 +21,19 @@ extension Notebook {
 
 struct NotebookPersistence: NotebookPersistenceProtocol {
     
-    // create property to hold persisted photo
+    // create property to hold persisted fact
     let factPersist : FactPersistence
     
-    func saveFact(fact: UselessFactResponse, toNotebook notebook: Notebook) throws {
+    func saveFact(fact: [UselessFactResponse], toNotebook notebook: Notebook) throws {
         guard let context = notebook.managedObjectContext else {
             preconditionFailure("Notebook instance has no context.")
         }
-
-//        fact { (uselessFact) in
-//            _ = factPersist.createUselessFact(uselessFact: UselessFactResponse, inNotebook: notebook)
-//        }
+        fact.forEach { (uselessFact) in
+            _ = factPersist.createUselessFact(uselessFact: uselessFact, inNotebook: notebook)
+        }
         
         try context.save()
-        
     }
-    
-    
    
 }
 
@@ -49,6 +45,6 @@ protocol NotebookPersistenceProtocol {
     /// - Parameters:
     ///        - facts: the facts from the Facts API response
     ///        - notebook: notebook populated with facts
-    func saveFact(fact: UselessFactResponse, toNotebook notebook: Notebook) throws
+    func saveFact(fact: [UselessFactResponse], toNotebook notebook: Notebook) throws
   
 }
