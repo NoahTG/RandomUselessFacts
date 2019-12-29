@@ -23,7 +23,7 @@
             </objects>
             <point key="canvasLocation" x="-738" y="96"/>
         </scene>
-        <!--Daily Fact View Controller-->
+        <!--Useless Fact of the Day-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="DailyFactViewController" customModule="RandomUselessFacts" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,29 +31,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Useless Fact of the Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEZ-EK-mV7">
-                                <rect key="frame" x="21.5" y="119" width="371.5" height="125"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="125" id="tV6-PL-Uh8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="33"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2a-1A-ags" userLabel="Fact Label">
-                                <rect key="frame" x="29" y="252" width="364" height="212"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="jop-X4-Ft9">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="jop-X4-Ft9">
                                 <rect key="frame" x="188" y="489" width="39" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="xjj-2M-PoK"/>
                                 </constraints>
                             </activityIndicatorView>
-                            <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIG-CQ-1h8">
-                                <rect key="frame" x="134" y="560" width="146" height="65"/>
+                            <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIG-CQ-1h8">
+                                <rect key="frame" x="134" y="595" width="146" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -74,38 +59,46 @@
                                 </items>
                             </toolbar>
                             <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWG-ly-e1R">
-                                <rect key="frame" x="153.5" y="690" width="107" height="30"/>
+                                <rect key="frame" x="161.5" y="690" width="91" height="30"/>
                                 <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Favorite Facts"/>
+                                <state key="normal" title="Saved Facts"/>
                                 <connections>
                                     <segue destination="3kt-ms-VRz" kind="presentation" id="87u-mM-gmQ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2a-1A-ags" userLabel="Fact Label">
+                                <rect key="frame" x="68" y="170" width="279" height="283"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="283" id="xkK-y7-G8R"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="S2a-1A-ags" firstAttribute="top" secondItem="CEZ-EK-mV7" secondAttribute="bottom" constant="8" id="19E-aM-a6P"/>
-                            <constraint firstItem="jop-X4-Ft9" firstAttribute="top" secondItem="S2a-1A-ags" secondAttribute="bottom" constant="25" id="2vF-ca-GjK"/>
-                            <constraint firstItem="CEZ-EK-mV7" firstAttribute="centerX" secondItem="mWG-ly-e1R" secondAttribute="centerX" id="37U-R7-avz"/>
-                            <constraint firstItem="DG7-sQ-tdc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Jbb-gS-Ctm"/>
-                            <constraint firstAttribute="bottom" secondItem="jop-X4-Ft9" secondAttribute="bottom" constant="367" id="Ocw-8Y-gpW"/>
-                            <constraint firstItem="CEZ-EK-mV7" firstAttribute="trailing" secondItem="S2a-1A-ags" secondAttribute="trailing" id="RVM-e4-CMq"/>
-                            <constraint firstItem="CEZ-EK-mV7" firstAttribute="centerX" secondItem="DG7-sQ-tdc" secondAttribute="centerX" id="SfT-mv-rqY"/>
-                            <constraint firstItem="S2a-1A-ags" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="YjH-pu-tnh"/>
-                            <constraint firstItem="CEZ-EK-mV7" firstAttribute="centerX" secondItem="IIG-CQ-1h8" secondAttribute="centerX" id="bxK-mY-y2T"/>
-                            <constraint firstItem="DG7-sQ-tdc" firstAttribute="top" secondItem="mWG-ly-e1R" secondAttribute="bottom" constant="85" id="c06-Vg-AGD"/>
-                            <constraint firstItem="IIG-CQ-1h8" firstAttribute="top" secondItem="jop-X4-Ft9" secondAttribute="bottom" constant="31" id="oA1-fE-rEy"/>
-                            <constraint firstItem="CEZ-EK-mV7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="31" id="pkm-nU-WD8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DG7-sQ-tdc" secondAttribute="bottom" constant="13" id="r0b-jR-BNT"/>
-                            <constraint firstItem="CEZ-EK-mV7" firstAttribute="centerX" secondItem="jop-X4-Ft9" secondAttribute="centerX" id="rLI-Yw-naC"/>
-                            <constraint firstItem="jop-X4-Ft9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="188" id="wWs-hC-MyB"/>
-                            <constraint firstItem="CEZ-EK-mV7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zcU-Bf-Xao"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mWG-ly-e1R" secondAttribute="trailing" constant="161.5" id="1jY-Vj-kwk"/>
+                            <constraint firstItem="S2a-1A-ags" firstAttribute="centerX" secondItem="jop-X4-Ft9" secondAttribute="centerX" id="45q-3w-kVM"/>
+                            <constraint firstItem="DG7-sQ-tdc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Aet-0m-Ie9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DG7-sQ-tdc" secondAttribute="bottom" constant="13" id="CfL-QB-cm3"/>
+                            <constraint firstItem="IIG-CQ-1h8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="134" id="HOt-y9-w1D"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jop-X4-Ft9" secondAttribute="trailing" constant="187" id="JWW-Zg-yv4"/>
+                            <constraint firstItem="mWG-ly-e1R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="161.5" id="XNl-wJ-acq"/>
+                            <constraint firstItem="IIG-CQ-1h8" firstAttribute="top" secondItem="jop-X4-Ft9" secondAttribute="bottom" constant="66" id="cvk-0w-LaA"/>
+                            <constraint firstItem="jop-X4-Ft9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="188" id="jNT-Ga-UNO"/>
+                            <constraint firstItem="S2a-1A-ags" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="82" id="kCz-Lo-Fg9"/>
+                            <constraint firstItem="DG7-sQ-tdc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kvb-PY-cZ5"/>
+                            <constraint firstItem="S2a-1A-ags" firstAttribute="leading" secondItem="jop-X4-Ft9" secondAttribute="leading" constant="-120" id="mPd-pc-ox5"/>
+                            <constraint firstItem="mWG-ly-e1R" firstAttribute="top" secondItem="IIG-CQ-1h8" secondAttribute="bottom" constant="65" id="qz4-7f-uM3"/>
+                            <constraint firstItem="DG7-sQ-tdc" firstAttribute="top" secondItem="mWG-ly-e1R" secondAttribute="bottom" constant="85" id="tLG-Gb-sxh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IIG-CQ-1h8" secondAttribute="trailing" constant="134" id="xua-ro-YMD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="cVh-R2-D93"/>
+                    <navigationItem key="navigationItem" title="Useless Fact of the Day" id="1je-pi-fsP"/>
                     <connections>
                         <outlet property="factLabel" destination="S2a-1A-ags" id="1an-ie-zh3"/>
                         <outlet property="loadingIndicator" destination="jop-X4-Ft9" id="51x-Fd-SJs"/>
@@ -127,7 +120,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Title" id="uQe-OA-Ieo"/>
+                                    <navigationItem title="Saved Fact" id="uQe-OA-Ieo"/>
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mM4-v6-3aH" userLabel="Saved Fact Label">
@@ -173,7 +166,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Title" id="rpY-34-Jdo"/>
+                                    <navigationItem title="Saved Facts" id="rpY-34-Jdo"/>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eNh-gF-7qO">
@@ -249,7 +242,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Title" id="cMZ-gI-hgS"/>
+                                    <navigationItem title="Saved Facts Lists" id="cMZ-gI-hgS"/>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eMl-md-VJk">
@@ -320,6 +313,6 @@
         <image name="trash" catalog="system" width="60" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kco-zY-dyW"/>
+        <segue reference="87u-mM-gmQ"/>
     </inferredMetricsTieBreakers>
 </document>

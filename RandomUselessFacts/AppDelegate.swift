@@ -14,21 +14,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    let dataController = DataController(modelName: "RandomUselessFacts")
+    let dataController = DataController(modelName: "RandomUselesssFacts")
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // inject datacontroller dependency into vc
+        let navigationController = window?.rootViewController as! UINavigationController
+        let dailyFactViewController = navigationController.topViewController as! DailyFactViewController
+        dailyFactViewController.dataController = dataController
 
-//        let navigationController = window?.rootViewController as! UINavigationController
-//
-//        let dailyFactViewController = navigationController.topViewController as! DailyFactViewController
-//
-//        dailyFactViewController.dataController = dataController
-//
-//        dataController.load()
-//        
+        dataController.load()
+        
         return true
     }
     

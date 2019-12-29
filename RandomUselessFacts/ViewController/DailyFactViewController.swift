@@ -62,6 +62,7 @@ class DailyFactViewController: UIViewController {
         DispatchQueue.main.async {
             if success != nil {
                 self.newFact = success!.text
+                self.refresh()
             } else {
                 self.loadingIndicator.isHidden = true
                 self.showAlert(title: "Failed to get new random useless fact", message: error?.localizedDescription ?? "")
