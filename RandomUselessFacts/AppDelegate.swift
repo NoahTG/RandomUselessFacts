@@ -14,18 +14,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    let dataController = DataController(modelName: "RandomUselesssFacts")
+    let dataController = DataController(modelName: "RandomUselessFacts")
     
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
+    // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
+    // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+    guard let _ = (scene as? UIWindowScene) else { return }
+        
+        // inject datacontroller dependency into vc
+               let navigationController = window?.rootViewController as! UINavigationController
+               let dailyFactViewController = navigationController.topViewController as! DailyFactViewController
+               dailyFactViewController.dataController = dataController
+
+               dataController.load()
+    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        // inject datacontroller dependency into vc
-        let navigationController = window?.rootViewController as! UINavigationController
-        let dailyFactViewController = navigationController.topViewController as! DailyFactViewController
-        dailyFactViewController.dataController = dataController
-
-        dataController.load()
         
         return true
     }
