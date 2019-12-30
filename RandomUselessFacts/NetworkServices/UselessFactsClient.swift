@@ -59,7 +59,10 @@ class UselessFactsClient {
     
      
         class func getFactOfTheDay(completion: @escaping (UselessFactResponse?, Error?) -> Void) {
-            taskForGETRequest(url: Endpoints.factOfTheDay.url, responseType: UselessFactResponse.self){ response, error in
+            taskForGETRequest(
+            url: Endpoints.factOfTheDay.url,
+            responseType: UselessFactResponse.self)
+            { response, error in
              if let response = response {
                  completion(response, nil)
              } else {
@@ -69,7 +72,10 @@ class UselessFactsClient {
      }
      
         class func getRandomFact(completion: @escaping (UselessFactResponse?, Error?) -> Void) {
-            taskForGETRequest(url: Endpoints.randomFact.url, responseType: UselessFactResponse.self){ response, error in
+            taskForGETRequest(
+            url: Endpoints.randomFact.url,
+            responseType: UselessFactResponse.self)
+            { response, error in
              if let response = response {
                  completion(response, nil)
              } else {

@@ -53,7 +53,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Hte-r5-Ya6"/>
                                     <barButtonItem title="Save Fact" width="42" style="plain" id="pmd-hX-ijQ">
                                         <connections>
-                                            <segue destination="3kt-ms-VRz" kind="presentation" identifier="saveToFactsLists" id="Kco-zY-dyW"/>
+                                            <segue destination="3kt-ms-VRz" kind="show" identifier="saveToFactsLists" id="Kco-zY-dyW"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -65,7 +65,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Saved Facts"/>
                                 <connections>
-                                    <segue destination="3kt-ms-VRz" kind="presentation" id="87u-mM-gmQ"/>
+                                    <segue destination="3kt-ms-VRz" kind="show" id="87u-mM-gmQ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2a-1A-ags" userLabel="Fact Label">
@@ -108,23 +108,16 @@
             </objects>
             <point key="canvasLocation" x="76.811594202898561" y="95.758928571428569"/>
         </scene>
-        <!--Fact Details View Controller-->
+        <!--Fact Details-->
         <scene sceneID="UIQ-io-Oas">
             <objects>
                 <viewController id="fs9-zY-SWe" customClass="FactDetailsViewController" customModule="RandomUselessFacts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k89-XB-767">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" id="4r8-4h-qgR">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Saved Fact" id="uQe-OA-Ieo"/>
-                                </items>
-                            </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mM4-v6-3aH" userLabel="Saved Fact Label">
-                                <rect key="frame" x="32" y="131" width="351" height="311"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mM4-v6-3aH" userLabel="Saved Fact Label">
+                                <rect key="frame" x="37" y="190" width="340" height="282"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -132,14 +125,14 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="gbo-uJ-6O0" firstAttribute="bottom" secondItem="mM4-v6-3aH" secondAttribute="bottom" constant="366" id="CLF-Ln-kS7"/>
-                            <constraint firstItem="mM4-v6-3aH" firstAttribute="leading" secondItem="gbo-uJ-6O0" secondAttribute="leading" constant="32" id="aLn-V5-2C7"/>
-                            <constraint firstItem="mM4-v6-3aH" firstAttribute="top" secondItem="4r8-4h-qgR" secondAttribute="bottom" constant="43" id="enA-TQ-QU9"/>
-                            <constraint firstItem="mM4-v6-3aH" firstAttribute="centerX" secondItem="4r8-4h-qgR" secondAttribute="centerX" id="lc9-ps-mRx"/>
+                            <constraint firstItem="gbo-uJ-6O0" firstAttribute="trailing" secondItem="mM4-v6-3aH" secondAttribute="trailing" constant="37" id="0pf-zY-6Ap"/>
+                            <constraint firstItem="mM4-v6-3aH" firstAttribute="top" secondItem="gbo-uJ-6O0" secondAttribute="top" constant="102" id="7Jo-fw-znr"/>
+                            <constraint firstItem="gbo-uJ-6O0" firstAttribute="bottom" secondItem="mM4-v6-3aH" secondAttribute="bottom" constant="390" id="Onq-Ky-DAe"/>
+                            <constraint firstItem="mM4-v6-3aH" firstAttribute="leading" secondItem="gbo-uJ-6O0" secondAttribute="leading" constant="37" id="Xx1-la-PUq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gbo-uJ-6O0"/>
                     </view>
-                    <navigationItem key="navigationItem" id="iQu-y0-hsN">
+                    <navigationItem key="navigationItem" title="Fact Details" id="iQu-y0-hsN">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="trash" catalog="system" id="bVH-1e-kMb" userLabel="Delete">
                             <connections>
                                 <action selector="deleteFactWithSender:" destination="fs9-zY-SWe" id="Nci-CM-RXN"/>
@@ -152,25 +145,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9WD-FX-3vQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2429" y="96"/>
+            <point key="canvasLocation" x="2428.985507246377" y="95.758928571428569"/>
         </scene>
-        <!--Facts List View Controller-->
+        <!--Saved Facts-->
         <scene sceneID="gP2-Ez-Aat">
             <objects>
                 <viewController id="hCH-ZY-9R9" customClass="FactsListViewController" customModule="RandomUselessFacts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qpJ-U7-Rfi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" id="R7Z-z8-wnG">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Saved Facts" id="rpY-34-Jdo"/>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eNh-gF-7qO">
-                                <rect key="frame" x="0.0" y="88" width="414" height="754"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Reuse Identifier" id="1Pz-Sq-Ju2" customClass="FactCell" customModule="RandomUselessFacts" customModuleProvider="target">
@@ -206,7 +192,7 @@
                                         <connections>
                                             <outlet property="dateLabel" destination="S22-3Z-ltE" id="MJf-lA-dtq"/>
                                             <outlet property="factLabel" destination="ad0-Ht-cax" id="Vzl-Bi-XjS"/>
-                                            <segue destination="fs9-zY-SWe" kind="showDetail" id="yuS-8m-MmG"/>
+                                            <segue destination="fs9-zY-SWe" kind="show" id="yuS-8m-MmG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -214,14 +200,14 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="eNh-gF-7qO" secondAttribute="bottom" constant="-34" id="Guy-qK-9Bp"/>
-                            <constraint firstItem="eNh-gF-7qO" firstAttribute="leading" secondItem="R7Z-z8-wnG" secondAttribute="leading" id="N00-ck-jgL"/>
-                            <constraint firstItem="eNh-gF-7qO" firstAttribute="top" secondItem="R7Z-z8-wnG" secondAttribute="bottom" id="csT-9v-t8O"/>
-                            <constraint firstItem="eNh-gF-7qO" firstAttribute="trailing" secondItem="R7Z-z8-wnG" secondAttribute="trailing" id="xD0-xA-zT8"/>
+                            <constraint firstItem="eNh-gF-7qO" firstAttribute="trailing" secondItem="SzG-aX-lyl" secondAttribute="trailing" id="LCG-ly-key"/>
+                            <constraint firstAttribute="bottom" secondItem="eNh-gF-7qO" secondAttribute="bottom" id="LOm-kF-kfC"/>
+                            <constraint firstItem="eNh-gF-7qO" firstAttribute="leading" secondItem="SzG-aX-lyl" secondAttribute="leading" id="lgp-3l-fde"/>
+                            <constraint firstItem="eNh-gF-7qO" firstAttribute="top" secondItem="SzG-aX-lyl" secondAttribute="top" id="q3m-kB-CMk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SzG-aX-lyl"/>
                     </view>
-                    <navigationItem key="navigationItem" id="A5g-ZH-kbJ"/>
+                    <navigationItem key="navigationItem" title="Saved Facts" id="A5g-ZH-kbJ"/>
                     <connections>
                         <outlet property="tableView" destination="eNh-gF-7qO" id="lPV-Eo-Hym"/>
                     </connections>
@@ -230,23 +216,16 @@
             </objects>
             <point key="canvasLocation" x="1622" y="96"/>
         </scene>
-        <!--Notebooks List View Controller-->
+        <!--Saved Facts Lists-->
         <scene sceneID="iqJ-nR-7BU">
             <objects>
                 <viewController id="3kt-ms-VRz" customClass="NotebooksListViewController" customModule="RandomUselessFacts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OY5-lU-bg1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" id="jfc-Fz-1bw">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Saved Facts Lists" id="cMZ-gI-hgS"/>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eMl-md-VJk">
-                                <rect key="frame" x="0.0" y="88" width="414" height="754"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Reuse Identifier" id="yfW-Ir-Ih6" userLabel="Notebook Cell" customClass="NotebookCell" customModule="RandomUselessFacts" customModuleProvider="target">
@@ -284,7 +263,7 @@
                                             <outlet property="fact" destination="Z7Q-SP-nvJ" id="1E8-5D-uDm"/>
                                             <outlet property="listCountlabel" destination="3kU-wk-zZX" id="yFR-UR-2z4"/>
                                             <outlet property="nameLabel" destination="Z7Q-SP-nvJ" id="77X-bd-Klr"/>
-                                            <segue destination="hCH-ZY-9R9" kind="presentation" id="tYj-J3-hGr"/>
+                                            <segue destination="hCH-ZY-9R9" kind="show" id="tYj-J3-hGr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -292,21 +271,21 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="eMl-md-VJk" firstAttribute="trailing" secondItem="jfc-Fz-1bw" secondAttribute="trailing" id="Pd2-BL-WtO"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="eMl-md-VJk" secondAttribute="bottom" constant="-34" id="baN-2G-OMu"/>
-                            <constraint firstItem="eMl-md-VJk" firstAttribute="leading" secondItem="jfc-Fz-1bw" secondAttribute="leading" id="pN2-zt-RdB"/>
-                            <constraint firstItem="eMl-md-VJk" firstAttribute="top" secondItem="jfc-Fz-1bw" secondAttribute="bottom" id="sH0-Mg-atm"/>
+                            <constraint firstItem="eMl-md-VJk" firstAttribute="top" secondItem="Ant-IB-rR3" secondAttribute="top" id="HWb-Xe-aZY"/>
+                            <constraint firstAttribute="bottom" secondItem="eMl-md-VJk" secondAttribute="bottom" id="Rcm-wk-s7N"/>
+                            <constraint firstItem="eMl-md-VJk" firstAttribute="trailing" secondItem="Ant-IB-rR3" secondAttribute="trailing" id="YNB-x5-i9E"/>
+                            <constraint firstItem="eMl-md-VJk" firstAttribute="leading" secondItem="Ant-IB-rR3" secondAttribute="leading" id="lF1-x3-mZI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ant-IB-rR3"/>
                     </view>
-                    <navigationItem key="navigationItem" id="gcx-hV-cJr"/>
+                    <navigationItem key="navigationItem" title="Saved Facts Lists" id="Vio-P3-ozj"/>
                     <connections>
                         <outlet property="tableView" destination="eMl-md-VJk" id="CiV-K3-Crf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KD3-Mz-tTV" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="865" y="96"/>
+            <point key="canvasLocation" x="863.768115942029" y="95.758928571428569"/>
         </scene>
     </scenes>
     <resources>
