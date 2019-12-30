@@ -12,11 +12,11 @@ import CoreData
 
 class NotebooksListViewController: UIViewController, UITableViewDataSource {
     /// A table view that displays a list of notebooks
-   
+    
     @IBOutlet weak var tableView: UITableView!
     
     var dataController:DataController!
-    
+        
     var factToSave:String?
     
     var fetchedResultsController:NSFetchedResultsController<Notebook>!
@@ -37,18 +37,19 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//       navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "toolbar-cow"))
+        //       navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "toolbar-cow"))
         navigationItem.rightBarButtonItem = editButtonItem
-
+        
         setupFetchedResultsController()
         
         if fetchedResultsController.fetchedObjects?.count == 0 {
-                  presentNewListAlert()
+            presentNewListAlert()
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tableView.reloadData()
         setupFetchedResultsController()
         if let indexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: indexPath, animated: false)
@@ -59,23 +60,24 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         fetchedResultsController = nil
+        factToSave = nil
     }
-
+    
     // -------------------------------------------------------------------------
     // MARK: - Actions
-
+    
     @IBAction func addList(sender: Any) {
         presentNewListAlert()
     }
-
+    
     // -------------------------------------------------------------------------
     // MARK: - Editing
-
+    
     /// Display an alert prompting the user to name a new notebook. Calls
     /// `addList(name:)`.
     func presentNewListAlert() {
         let alert = UIAlertController(title: "New List", message: "Enter a name for this list", preferredStyle: .alert)
-
+        
         // Create actions
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] action in
@@ -84,7 +86,7 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
             }
         }
         saveAction.isEnabled = false
-
+        
         // Add a text field
         alert.addTextField { textField in
             textField.placeholder = "List Name"
@@ -96,12 +98,12 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
                 }
             }
         }
-
+        
         alert.addAction(cancelAction)
         alert.addAction(saveAction)
         present(alert, animated: true, completion: nil)
     }
-
+    
     /// Adds a new notebook to the end of the `notebooks` array
     func addList(name: String) {
         let notebook = Notebook(context: dataController.viewContext)
@@ -109,40 +111,40 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
         notebook.creationDate = Date()
         try? dataController.viewContext.save()
     }
-
+    
     /// Deletes the notebook at the specified index path
     func deleteList(at indexPath: IndexPath) {
         let notebookToDelete = fetchedResultsController.object(at: indexPath)
         dataController.viewContext.delete(notebookToDelete)
         try? dataController.viewContext.save()
     }
-
+    
     func updateEditButtonState() {
         if let sections = fetchedResultsController.sections {
             navigationItem.rightBarButtonItem?.isEnabled = sections[0].numberOfObjects > 0
         }
     }
-
+    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         tableView.setEditing(editing, animated: animated)
     }
-
+    
     // -------------------------------------------------------------------------
     // MARK: - Table view data source
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let aNotebook = fetchedResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: NotebookCell.defaultReuseIdentifier, for: indexPath) as! NotebookCell
-
+        
         // Configure cell
         cell.nameLabel.text = aNotebook.name
         
@@ -150,20 +152,20 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
             let listString = count == 1 ? "list" : "lists"
             cell.listCountlabel.text = "\(count) \(listString)"
         }
-            
+        
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete: deleteList(at: indexPath)
         default: () // Unsupported
         }
     }
-
+    
     // -------------------------------------------------------------------------
     // MARK: - SEGYE
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // If this is a NotesListViewController, we'll configure its `Notebook`
         if let FactsListvc = segue.destination as? FactsListViewController {
@@ -172,7 +174,7 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
                 
                 let destinationList = fetchedResultsController.object(at: indexPath)
                 FactsListvc.notebook = destinationList
-
+                
                 if (factToSave != nil) {
                     let factToAdd = Fact(context: dataController.viewContext)
                     factToAdd.text = factToSave!
@@ -214,7 +216,7 @@ extension NotebooksListViewController:NSFetchedResultsControllerDelegate {
             fatalError()
         }
     }
-
+    
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
