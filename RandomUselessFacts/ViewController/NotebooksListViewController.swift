@@ -16,7 +16,7 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
     var dataController:DataController!
-        
+    
     var factToSave:String?
     
     var fetchedResultsController:NSFetchedResultsController<Notebook>!
@@ -37,7 +37,6 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //       navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "toolbar-cow"))
         navigationItem.rightBarButtonItem = editButtonItem
         
         setupFetchedResultsController()
@@ -49,7 +48,6 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tableView.reloadData()
         setupFetchedResultsController()
         if let indexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: indexPath, animated: false)
@@ -66,7 +64,7 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
     // -------------------------------------------------------------------------
     // MARK: - Actions
     
-    @IBAction func addList(sender: Any) {
+    @IBAction func addList(_ sender: Any) {
         presentNewListAlert()
     }
     
@@ -104,7 +102,7 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
         present(alert, animated: true, completion: nil)
     }
     
-    /// Adds a new notebook to the end of the `notebooks` array
+    /// Adds a new notebook to the end of the notebooks` array
     func addList(name: String) {
         let notebook = Notebook(context: dataController.viewContext)
         notebook.name = name
@@ -119,18 +117,6 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
         try? dataController.viewContext.save()
     }
     
-    func updateEditButtonState() {
-        if let sections = fetchedResultsController.sections {
-            navigationItem.rightBarButtonItem?.isEnabled = sections[0].numberOfObjects > 0
-        }
-    }
-    
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
-        tableView.setEditing(editing, animated: animated)
-    }
-    
-    // -------------------------------------------------------------------------
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -163,8 +149,7 @@ class NotebooksListViewController: UIViewController, UITableViewDataSource {
         }
     }
     
-    // -------------------------------------------------------------------------
-    // MARK: - SEGYE
+    // MARK: - SEGUE
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // If this is a NotesListViewController, we'll configure its `Notebook`
@@ -216,7 +201,6 @@ extension NotebooksListViewController:NSFetchedResultsControllerDelegate {
             fatalError()
         }
     }
-    
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()

@@ -159,7 +159,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Reuse Identifier" id="1Pz-Sq-Ju2" customClass="FactCell" customModule="RandomUselessFacts" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SavedFactsCell" id="1Pz-Sq-Ju2" userLabel="Facts Cell" customClass="FactCell" customModule="RandomUselessFacts" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Pz-Sq-Ju2" id="ZEM-OT-8XN">
@@ -228,7 +228,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Reuse Identifier" id="yfW-Ir-Ih6" userLabel="Notebook Cell" customClass="NotebookCell" customModule="RandomUselessFacts" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SavedFactsListsCell" id="yfW-Ir-Ih6" userLabel="Notebook Cell" customClass="NotebookCell" customModule="RandomUselessFacts" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yfW-Ir-Ih6" id="wbM-II-yqr">
@@ -278,7 +278,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ant-IB-rR3"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Saved Facts Lists" id="Vio-P3-ozj"/>
+                    <navigationItem key="navigationItem" title="Saved Facts Lists" id="Vio-P3-ozj">
+                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" catalog="system" id="sak-yl-8CW">
+                            <connections>
+                                <action selector="addListWithSender:" destination="3kt-ms-VRz" id="KQc-KD-1HA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="eMl-md-VJk" id="CiV-K3-Crf"/>
                     </connections>
@@ -289,6 +295,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="plus" catalog="system" width="64" height="56"/>
         <image name="trash" catalog="system" width="60" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
