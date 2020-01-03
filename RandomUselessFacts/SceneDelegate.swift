@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = window?.rootViewController as! UINavigationController
         let dailyFactViewController = navigationController.topViewController as! DailyFactViewController
         dailyFactViewController.dataController = dataController
-
+        
         dataController.load()
     }
         
