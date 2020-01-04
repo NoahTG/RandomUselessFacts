@@ -1,6 +1,6 @@
 # RandomUselessFacts
 
-The Random Useless Facts app downloads and persists random useless facts to help the user increase their knowledge base. The user can save memorable facts in different lists to review and recall later.   
+The Random Useless Facts app downloads and persists random useless facts to help the user increase their knowledge base. The user can save memorable facts in different lists to review and recall later. 
 
 ## Requirements
 - Xcode 10.1
